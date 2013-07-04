@@ -1,15 +1,13 @@
+#!/usr/bin/env node
 var express = require('express');
 var fs = require('fs');
-var buf = require('buf');
 
 var app = express.createServer(express.logger());
 
-var content = fs.readFileSync('index.html');
-
-var buffer = new Buffer(content)
+var test = fs.readFileSync('index.html')
 
 app.get('/', function(request, response) {
-  response.send(buffer.toString('utf-8'));
+  response.send(test.toString('utf8'));
 });
 
 var port = process.env.PORT || 5000;
